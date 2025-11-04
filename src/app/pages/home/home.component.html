@@ -1,0 +1,21 @@
+<div class="home-container">
+  <header class="header">
+    <h1 class="title">
+      <span class="gradient-text">File Flexer</span>
+    </h1>
+    <p class="subtitle">Selecciona el tipo de conversión que necesitas</p>
+  </header>
+
+  <main class="main-content">
+    <div class="conversions-grid">
+      @for (option of allConversions; track option.id) {
+      <app-conversion-card [option]="option" [selected]="selectedConversion()?.id === option.id && isConverting()"
+        (cardClicked)="onConversionSelected($event)" />
+      }
+    </div>
+  </main>
+</div>
+
+<app-conversion-dialog [visible]="dialogVisible()" [data]="dialogData()" (visibleChange)="dialogVisible.set($event)"
+  (download)="onDialogDownload($event)" (close)="onDialogClose()">
+</app-conversion-dialog>
