@@ -1,0 +1,54 @@
+<p-dialog [header]="dialogHeader" [(visible)]="dialogVisible" [modal]="true"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [style]="{ width: '500px' }" [draggable]="false"
+  [resizable]="false" (onHide)="onHide()" [closable]="data?.status === 'completed' || data?.status === 'error'">
+
+  <div class="conversion-dialog-content" *ngIf="data">
+    <div class="status-icon-container" [ngClass]="statusClass">
+      <i [class]="statusIcon + ' status-icon'"></i>
+    </div>
+
+    <div class="file-info">
+      <div class="file-name">
+        <i class="pi pi-file"></i>
+        <span>{{ data.fileName }}</span>
+      </div>
+      <div class="conversion-info">
+        <span class="format-badge from">{{ data.fromFormat.toUpperCase() }}</span>
+        <i class="pi pi-arrow-right"></i>
+        <span class="format-badge to">{{ data.toFormat.toUpperCase() }}</span>
+      </div>
+    </div>
+
+
+    <div class="progress-container" *ngIf="data.status === 'uploading' || data.status === 'converting'">
+      <p-progressBar [value]="data.progress" [showValue]="true">
+      </p-progressBar>
+      <p class="progress-text">
+        {{ data.status === 'uploading' ? 'Subiendo archivo...' : 'Procesando conversión...' }}
+      </p>
+    </div>
+
+
+    <div class="success-message" *ngIf="data.status === 'completed'">
+      <p>Tu archivo ha sido convertido exitosamente.</p>
+    </div>
+
+
+    <div class="error-message" *ngIf="data.status === 'error'">
+      <p>{{ data.errorMessage || 'Ocurrió un error durante la conversión.' }}</p>
+    </div>
+  </div>
+
+
+  <ng-template pTemplate="footer">
+    <div class="dialog-footer">
+      <p-button *ngIf="data?.status === 'completed' && data?.downloadUrl" label="Descargar" icon="pi pi-download"
+        severity="success" (onClick)="onDownload()">
+      </p-button>
+
+      <p-button *ngIf="data?.status === 'completed' || data?.status === 'error'" label="Cerrar" icon="pi pi-times"
+        [outlined]="true" (onClick)="closeDialog()">
+      </p-button>
+    </div>
+  </ng-template>
+</p-dialog>
