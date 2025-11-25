@@ -4,7 +4,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'docx-pdf',
     title: 'DOCX to PDF',
-    description: 'Convierte documentos Word a PDF',
+    description: 'Convert Word documents to PDF',
     fromFormat: 'docx',
     toFormat: 'pdf',
     icon: 'document',
@@ -12,7 +12,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'pdf-docx',
     title: 'PDF to DOCX',
-    description: 'Transforma PDFs en documentos Word editables',
+    description: 'Transform PDFs into editable Word documents',
     fromFormat: 'pdf',
     toFormat: 'docx',
     icon: 'document',
@@ -20,7 +20,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'html-pdf',
     title: 'HTML to PDF',
-    description: 'Genera PDFs desde archivos HTML',
+    description: 'Generate PDFs from HTML files',
     fromFormat: 'html',
     toFormat: 'pdf',
     icon: 'code',
@@ -28,7 +28,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'docx-txt',
     title: 'DOCX to TXT',
-    description: 'Extrae texto plano de documentos Word',
+    description: 'Extract plain text from Word documents',
     fromFormat: 'docx',
     toFormat: 'txt',
     icon: 'document',
@@ -37,7 +37,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'xlsx-pdf',
     title: 'Excel to PDF',
-    description: 'Convierte hojas de cálculo Excel a PDF',
+    description: 'Convert Excel spreadsheets to PDF',
     fromFormat: 'xlsx',
     toFormat: 'pdf',
     icon: 'document',
@@ -45,7 +45,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'pptx-pdf',
     title: 'PowerPoint to PDF',
-    description: 'Convierte presentaciones a PDF',
+    description: 'Convert PowerPoint presentations to PDF',
     fromFormat: 'pptx',
     toFormat: 'pdf',
     icon: 'document',
@@ -55,7 +55,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'jpg-png',
     title: 'JPG to PNG',
-    description: 'Convierte imágenes JPG a PNG',
+    description: 'Convert JPG images to PNG',
     fromFormat: 'jpg',
     toFormat: 'png',
     icon: 'image',
@@ -63,7 +63,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'png-jpg',
     title: 'PNG to JPG',
-    description: 'Convierte imágenes PNG a JPG',
+    description: 'Convert PNG images to JPG',
     fromFormat: 'png',
     toFormat: 'jpg',
     icon: 'image',
@@ -71,7 +71,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'webp-png',
     title: 'WebP to PNG',
-    description: 'Convierte imágenes WebP a PNG',
+    description: 'Convert WebP images to PNG',
     fromFormat: 'webp',
     toFormat: 'png',
     icon: 'image',
@@ -79,7 +79,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'png-webp',
     title: 'PNG to WebP',
-    description: 'Convierte imágenes PNG a WebP',
+    description: 'Convert PNG images to WebP',
     fromFormat: 'png',
     toFormat: 'webp',
     icon: 'image',
@@ -87,7 +87,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'jpg-webp',
     title: 'JPG to WebP',
-    description: 'Convierte imágenes JPG a WebP',
+    description: 'Convert JPG images to WebP',
     fromFormat: 'jpg',
     toFormat: 'webp',
     icon: 'image',
@@ -95,7 +95,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'heic-jpg',
     title: 'HEIC to JPG',
-    description: 'Convierte imágenes HEIC a JPG',
+    description: 'Convert HEIC images to JPG',
     fromFormat: 'heic',
     toFormat: 'jpg',
     icon: 'image',
@@ -104,7 +104,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'compress-pdf',
     title: 'Compress PDF',
-    description: 'Reduce el tamaño de archivos PDF hasta 90%',
+    description: 'Reduce the size of PDF files by up to 90%',
     fromFormat: 'pdf',
     toFormat: 'pdf',
     icon: 'compress',
@@ -112,7 +112,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'compress-jpg',
     title: 'Compress JPG',
-    description: 'Optimiza imágenes JPG manteniendo calidad',
+    description: 'Optimize JPG images while maintaining quality',
     fromFormat: 'jpg',
     toFormat: 'jpg',
     icon: 'compress',
@@ -120,7 +120,7 @@ export const CONVERSION_OPTIONS: ConversionOption[] = [
   {
     id: 'compress-png',
     title: 'Compress PNG',
-    description: 'Reduce el tamaño de imágenes PNG',
+    description: 'Reduce the size of PNG images effectively',
     fromFormat: 'png',
     toFormat: 'png',
     icon: 'compress',
