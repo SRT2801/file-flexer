@@ -133,50 +133,50 @@ export class HomeComponent {
       await this.supabaseService.signOut();
       this.router.navigate(['/login']);
     } catch (error) {
-      console.error('Error al cerrar sesión:', error);
+      console.error('Error signing out:', error);
     }
   }
 
   openHelp(): void {
     this.infoModalContent.set({
-      title: 'Centro de Ayuda y FAQ',
+      title: 'Help Center & FAQ',
       sections: [
         {
-          heading: '¿Cómo convertir archivos?',
+          heading: 'How to convert files?',
           content: `
-            <strong>1.</strong> Selecciona el tipo de conversión que necesitas<br>
-            <strong>2.</strong> Haz clic en la tarjeta de conversión<br>
-            <strong>3.</strong> Selecciona tu archivo desde tu dispositivo<br>
-            <strong>4.</strong> Espera mientras procesamos tu archivo<br>
-            <strong>5.</strong> Descarga el archivo convertido
+            <strong>1.</strong> Select the conversion type you need<br>
+            <strong>2.</strong> Click on the conversion card<br>
+            <strong>3.</strong> Select your file from your device<br>
+            <strong>4.</strong> Wait while we process your file<br>
+            <strong>5.</strong> Download the converted file
           `,
         },
         {
-          heading: '¿Qué formatos son compatibles?',
+          heading: 'What formats are supported?',
           content: `
-            Admitimos una amplia gama de formatos de imagen, video, audio, documentos y compresión.
-            Revisa las tarjetas de conversión disponibles en la página principal para ver todas las opciones.
+            We support a wide range of image, video, audio, document, and compression formats.
+            Check out the conversion cards available on the main page to see all options.
           `,
         },
         {
-          heading: '¿Es seguro?',
+          heading: 'Is it secure?',
           content: `
-            Sí, todos tus archivos se procesan de forma segura. No almacenamos tus archivos después de la conversión
-            y todas las transferencias están cifradas.
+            Yes, all your files are processed securely. We don't store your files after conversion
+            and all transfers are encrypted.
           `,
         },
         {
-          heading: '¿Hay límites de tamaño?',
+          heading: 'Are there size limits?',
           content: `
-            Los archivos tienen un límite máximo según tu plan. Los usuarios gratuitos pueden convertir archivos
-            de hasta 100MB. Contacta con nosotros para planes empresariales.
+            Files have a maximum limit depending on your plan. Free users can convert files
+            up to 100MB. Contact us for enterprise plans.
           `,
         },
         {
-          heading: '¿Necesitas más ayuda?',
+          heading: 'Need more help?',
           content: `
-            Contacta con nuestro equipo de soporte en <strong>support@fileflexer.com</strong> y te ayudaremos
-            con cualquier problema o pregunta que tengas.
+            Contact our support team at <strong>support@fileflexer.com</strong> and we'll help you
+            with any issues or questions you may have.
           `,
         },
       ],
@@ -186,57 +186,118 @@ export class HomeComponent {
 
   openTerms(): void {
     this.infoModalContent.set({
-      title: 'Términos y Condiciones',
+      title: 'Terms and Conditions',
       sections: [
         {
-          heading: '1. Aceptación de los Términos',
+          heading: '1. Acceptance of Terms',
           content: `
-            Al acceder y utilizar File Flexer, aceptas estar sujeto a estos términos y condiciones.
-            Si no estás de acuerdo con alguna parte de estos términos, no debes utilizar nuestro servicio.
+            By accessing and using File Flexer, you agree to be bound by these terms and conditions.
+            If you do not agree with any part of these terms, you should not use our service.
           `,
         },
         {
-          heading: '2. Uso del Servicio',
+          heading: '2. Use of Service',
           content: `
-            File Flexer proporciona servicios de conversión de archivos. Te comprometes a utilizar el servicio
-            únicamente para fines legales y de acuerdo con todas las leyes y regulaciones aplicables.
-            No debes cargar contenido ilegal, malicioso o que infrinja derechos de terceros.
+            File Flexer provides file conversion services. You agree to use the service
+            solely for legal purposes and in accordance with all applicable laws and regulations.
+            You must not upload illegal, malicious content or content that infringes third-party rights.
           `,
         },
         {
-          heading: '3. Privacidad y Datos',
+          heading: '3. Privacy and Data',
           content: `
-            Respetamos tu privacidad. Los archivos que cargas se procesan temporalmente y se eliminan
-            automáticamente después de la conversión. No compartimos tus datos con terceros sin tu consentimiento.
-            Consulta nuestra Política de Privacidad para más información.
+            We respect your privacy. Files you upload are processed temporarily and automatically deleted
+            after conversion. We do not share your data with third parties without your consent.
+            Please refer to our Privacy Policy for more information.
           `,
         },
         {
-          heading: '4. Propiedad Intelectual',
+          heading: '4. Intellectual Property',
           content: `
-            Todos los derechos de propiedad intelectual del servicio File Flexer pertenecen a sus propietarios.
-            Tú conservas todos los derechos sobre los archivos que cargas y conviertes.
+            All intellectual property rights to the File Flexer service belong to its owners.
+            You retain all rights to the files you upload and convert.
           `,
         },
         {
-          heading: '5. Limitación de Responsabilidad',
+          heading: '5. Limitation of Liability',
           content: `
-            File Flexer se proporciona "tal cual" sin garantías de ningún tipo. No nos hacemos responsables
-            de pérdidas de datos, daños o problemas derivados del uso del servicio. Utiliza el servicio
-            bajo tu propio riesgo.
+            File Flexer is provided "as is" without warranties of any kind. We are not responsible
+            for data loss, damages, or issues arising from the use of the service. Use the service
+            at your own risk.
           `,
         },
         {
-          heading: '6. Modificaciones',
+          heading: '6. Modifications',
           content: `
-            Nos reservamos el derecho de modificar estos términos en cualquier momento.
-            Los cambios entrarán en vigor inmediatamente después de su publicación.
+            We reserve the right to modify these terms at any time.
+            Changes will take effect immediately after publication.
           `,
         },
         {
-          heading: '7. Contacto',
+          heading: '7. Contact',
           content: `
-            Para preguntas sobre estos términos, contacta con nosotros en <strong>legal@fileflexer.com</strong>
+            For questions about these terms, contact us at <strong>legal@fileflexer.com</strong>
+          `,
+        },
+      ],
+    });
+    this.infoModalVisible.set(true);
+  }
+
+  openAbout(): void {
+    this.infoModalContent.set({
+      title: 'About File Flexer',
+      sections: [
+        {
+          heading: 'Our Mission',
+          content: `
+            At <strong>File Flexer</strong>, our mission is to simplify file conversion for everyone.
+            We believe that converting files between formats should be fast, easy, and accessible, no matter
+            where you are or what device you use.
+          `,
+        },
+        {
+          heading: 'Who We Are?',
+          content: `
+            We are a passionate team of developers and designers committed to creating innovative
+            web tools. Founded in 2025, File Flexer was born from the need for a reliable, fast,
+            and easy-to-use file conversion solution.
+          `,
+        },
+        {
+          heading: 'What We Offer',
+          content: `
+            <strong>• Fast Conversions:</strong> Ultra-fast processing of your files<br>
+            <strong>• Multiple Formats:</strong> Support for images, videos, audio, documents, and more<br>
+            <strong>• Security:</strong> Your files are automatically deleted after conversion<br>
+            <strong>• No Installation:</strong> Everything works directly in your browser<br>
+            <strong>• Free:</strong> Basic conversions at no cost
+          `,
+        },
+        {
+          heading: 'Our Technology',
+          content: `
+            We use the latest web technologies to provide a superior conversion experience.
+            Our platform is built with Angular, optimized for performance, and
+            designed with a focus on user privacy.
+          `,
+        },
+        {
+          heading: 'Privacy Commitment',
+          content: `
+            Your privacy is our priority. We don't store your files after conversion,
+            we don't track your activity, and we don't share your data with third parties. All processes
+            are performed securely and temporarily.
+          `,
+        },
+        {
+          heading: 'Contact Us',
+          content: `
+            Have questions, suggestions, or need support?<br>
+            <strong>Email:</strong> contact@fileflexer.com<br>
+            <strong>Support:</strong> support@fileflexer.com<br>
+            <strong>Partnerships:</strong> business@fileflexer.com<br><br>
+            We'd love to hear from you and we continue working to improve our service every day.
           `,
         },
       ],

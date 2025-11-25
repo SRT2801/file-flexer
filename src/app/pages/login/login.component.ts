@@ -32,7 +32,7 @@ export class LoginComponent {
         this.router.navigate(['/']);
       }
     } catch (error) {
-      this.errorMessage.set('Error al iniciar sesión. Intenta nuevamente.');
+      this.errorMessage.set('Error signing in. Please try again.');
     } finally {
       this.loading.set(false);
     }

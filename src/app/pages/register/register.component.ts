@@ -26,15 +26,15 @@ export class RegisterComponent {
     this.errorMessage.set('');
     this.successMessage.set('');
 
-    // Validaciones
+    // Validations
     if (this.password() !== this.confirmPassword()) {
-      this.errorMessage.set('Las contraseñas no coinciden');
+      this.errorMessage.set('Passwords do not match');
       this.loading.set(false);
       return;
     }
 
     if (this.password().length < 6) {
-      this.errorMessage.set('La contraseña debe tener al menos 6 caracteres');
+      this.errorMessage.set('Password must be at least 6 characters');
       this.loading.set(false);
       return;
     }
@@ -46,14 +46,14 @@ export class RegisterComponent {
         this.errorMessage.set(error.message);
       } else {
         this.successMessage.set(
-          'Cuenta creada exitosamente. Revisa tu email para confirmar tu cuenta.'
+          'Account created successfully. Check your email to confirm your account.'
         );
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 2000);
       }
     } catch (error) {
-      this.errorMessage.set('Error al crear la cuenta. Intenta nuevamente.');
+      this.errorMessage.set('Error creating account. Please try again.');
     } finally {
       this.loading.set(false);
     }
