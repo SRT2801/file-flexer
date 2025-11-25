@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import {
   ConversionCardComponent,
   ConversionOption,
@@ -8,14 +9,16 @@ import {
   ConversionDialogComponent,
   ConversionDialogData,
 } from '../../components/conversion-dialog/conversion-dialog.component';
+import { InfoModalComponent, ModalContent } from '../../components/info-modal/info-modal.component';
 import { Convert } from '../../services/convert';
 import { environment } from '../../../environments/environments';
 import { CONVERSION_OPTIONS } from '../../services/conversion-options';
+import { SupabaseService } from '../../services/supabase.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ConversionCardComponent, ConversionDialogComponent],
+  imports: [CommonModule, ConversionCardComponent, ConversionDialogComponent, InfoModalComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -30,7 +33,14 @@ export class HomeComponent {
   dialogVisible = signal(false);
   dialogData = signal<ConversionDialogData | null>(null);
 
-  constructor(private convertService: Convert) {}
+  infoModalVisible = signal(false);
+  infoModalContent = signal<ModalContent | null>(null);
+
+  constructor(
+    private convertService: Convert,
+    private supabaseService: SupabaseService,
+    private router: Router
+  ) {}
 
   onConversionSelected(option: ConversionOption): void {
     this.selectedConversion.set(option);
@@ -116,5 +126,121 @@ export class HomeComponent {
   onDialogClose(): void {
     this.dialogVisible.set(false);
     this.dialogData.set(null);
+  }
+
+  async onLogout(): Promise<void> {
+    try {
+      await this.supabaseService.signOut();
+      this.router.navigate(['/login']);
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  }
+
+  openHelp(): void {
+    this.infoModalContent.set({
+      title: 'Centro de Ayuda y FAQ',
+      sections: [
+        {
+          heading: '¿Cómo convertir archivos?',
+          content: `
+            <strong>1.</strong> Selecciona el tipo de conversión que necesitas<br>
+            <strong>2.</strong> Haz clic en la tarjeta de conversión<br>
+            <strong>3.</strong> Selecciona tu archivo desde tu dispositivo<br>
+            <strong>4.</strong> Espera mientras procesamos tu archivo<br>
+            <strong>5.</strong> Descarga el archivo convertido
+          `,
+        },
+        {
+          heading: '¿Qué formatos son compatibles?',
+          content: `
+            Admitimos una amplia gama de formatos de imagen, video, audio, documentos y compresión.
+            Revisa las tarjetas de conversión disponibles en la página principal para ver todas las opciones.
+          `,
+        },
+        {
+          heading: '¿Es seguro?',
+          content: `
+            Sí, todos tus archivos se procesan de forma segura. No almacenamos tus archivos después de la conversión
+            y todas las transferencias están cifradas.
+          `,
+        },
+        {
+          heading: '¿Hay límites de tamaño?',
+          content: `
+            Los archivos tienen un límite máximo según tu plan. Los usuarios gratuitos pueden convertir archivos
+            de hasta 100MB. Contacta con nosotros para planes empresariales.
+          `,
+        },
+        {
+          heading: '¿Necesitas más ayuda?',
+          content: `
+            Contacta con nuestro equipo de soporte en <strong>support@fileflexer.com</strong> y te ayudaremos
+            con cualquier problema o pregunta que tengas.
+          `,
+        },
+      ],
+    });
+    this.infoModalVisible.set(true);
+  }
+
+  openTerms(): void {
+    this.infoModalContent.set({
+      title: 'Términos y Condiciones',
+      sections: [
+        {
+          heading: '1. Aceptación de los Términos',
+          content: `
+            Al acceder y utilizar File Flexer, aceptas estar sujeto a estos términos y condiciones.
+            Si no estás de acuerdo con alguna parte de estos términos, no debes utilizar nuestro servicio.
+          `,
+        },
+        {
+          heading: '2. Uso del Servicio',
+          content: `
+            File Flexer proporciona servicios de conversión de archivos. Te comprometes a utilizar el servicio
+            únicamente para fines legales y de acuerdo con todas las leyes y regulaciones aplicables.
+            No debes cargar contenido ilegal, malicioso o que infrinja derechos de terceros.
+          `,
+        },
+        {
+          heading: '3. Privacidad y Datos',
+          content: `
+            Respetamos tu privacidad. Los archivos que cargas se procesan temporalmente y se eliminan
+            automáticamente después de la conversión. No compartimos tus datos con terceros sin tu consentimiento.
+            Consulta nuestra Política de Privacidad para más información.
+          `,
+        },
+        {
+          heading: '4. Propiedad Intelectual',
+          content: `
+            Todos los derechos de propiedad intelectual del servicio File Flexer pertenecen a sus propietarios.
+            Tú conservas todos los derechos sobre los archivos que cargas y conviertes.
+          `,
+        },
+        {
+          heading: '5. Limitación de Responsabilidad',
+          content: `
+            File Flexer se proporciona "tal cual" sin garantías de ningún tipo. No nos hacemos responsables
+            de pérdidas de datos, daños o problemas derivados del uso del servicio. Utiliza el servicio
+            bajo tu propio riesgo.
+          `,
+        },
+        {
+          heading: '6. Modificaciones',
+          content: `
+            Nos reservamos el derecho de modificar estos términos en cualquier momento.
+            Los cambios entrarán en vigor inmediatamente después de su publicación.
+          `,
+        },
+        {
+          heading: '7. Contacto',
+          content: `
+            Para preguntas sobre estos términos, contacta con nosotros en <strong>legal@fileflexer.com</strong>
+          `,
+        },
+      ],
+    });
+    this.infoModalVisible.set(true);
   }
 }

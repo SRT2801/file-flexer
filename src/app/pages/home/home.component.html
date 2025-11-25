@@ -1,9 +1,19 @@
 <div class="home-container">
+  <button class="logout-button" (click)="onLogout()" title="Cerrar sesión">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+      <polyline points="16 17 21 12 16 7"></polyline>
+      <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg>
+    <span>Logout</span>
+  </button>
+
   <header class="header">
     <h1 class="title">
       <span class="gradient-text">File Flexer</span>
     </h1>
-    <p class="subtitle">Selecciona el tipo de conversión que necesitas</p>
+    <p class="subtitle">Select the conversion type you need</p>
   </header>
 
   <main class="main-content">
@@ -14,8 +24,40 @@
       }
     </div>
   </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <button class="footer-button" (click)="openHelp()" title="Centro de ayuda">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        <span>Centro de Ayuda y FAQ</span>
+      </button>
+
+      <button class="footer-button" (click)="openTerms()" title="Términos y condiciones">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span>Términos y Condiciones</span>
+      </button>
+    </div>
+
+    <p class="footer-copyright">© 2025 File Flexer. Todos los derechos reservados.</p>
+  </footer>
 </div>
 
 <app-conversion-dialog [visible]="dialogVisible()" [data]="dialogData()" (visibleChange)="dialogVisible.set($event)"
   (download)="onDialogDownload($event)" (close)="onDialogClose()">
 </app-conversion-dialog>
+
+<app-info-modal [visible]="infoModalVisible()" [content]="infoModalContent()"
+  (visibleChange)="infoModalVisible.set($event)">
+</app-info-modal>
