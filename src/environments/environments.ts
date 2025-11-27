@@ -1,8 +1,5 @@
-// This file will be replaced during build with environment variables from Netlify
-declare const process: any;
-
 export const environment = {
-  production: true,
+  production: false,
   token: 'DvvuM3B99JV1IQ7cDc15OvDJ6Xhekjqa',
 
   supabase: {
